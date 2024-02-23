@@ -1,0 +1,33 @@
+<link rel='stylesheet' href='css/login.css' />
+
+<div class='container'>
+
+  <div class='singup-section' id='singup-section'>
+    <header>Log Into Your Account</header>
+
+    <div class='seperator'>
+      <div class='line'></div>
+    </div>
+    <form action='/api/v1/users/login' method='post'>
+      <input
+        type='email'
+        placeholder='Enter your email'
+        name='email'
+        required
+      />
+      <input type='password' placeholder='Password' name='password' required />
+
+      <button type='submit' class='btn'>Login</button>
+
+      <div class='seperator'>
+        <div class='line'></div>
+        <a href='/signup'>Create account</a>
+        <div class='line'></div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
