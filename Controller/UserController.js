@@ -33,7 +33,7 @@ exports.login = CatchAsync(async function (request, response, next) {
     return next(new AppError('Invalid email or password'));
   const token = issueJwt({ _id: userDoc._id });
   response.cookie('jwt', token);
-  response.redirect('/');
+  response.redirect('/dashboard');
 });
 
 exports.protectRoute = CatchAsync(async function (request, response, next) {

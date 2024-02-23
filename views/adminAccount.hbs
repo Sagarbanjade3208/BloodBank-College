@@ -1,0 +1,55 @@
+<link rel='stylesheet' href='css/login.css' />
+<link
+  href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+  rel='stylesheet'
+/>
+
+<div class='container'>
+
+  <div class='singup-section' id='singup-section'>
+    <header>Create An Admin Account</header>
+
+    <div class='seperator'>
+      <div class='line'></div>
+    </div>
+    <form action='/api/v1/users/signup' method='post'>
+      <input type='hidden' value='true' name='isAdmin' />
+      <input type='text' placeholder='Enter your name' name='name' />
+      <input type='email' placeholder='Enter your email' name='email' />
+      <input
+        type='password'
+        placeholder='Enter your password'
+        name='password'
+      />
+      <input type='text' placeholder='Enter your address' name='address' />
+      <input
+        type='text'
+        placeholder='Enter your phone number'
+        name='phoneNumber'
+      />
+      <select id='bloodGroup' name='bloodGroup' required>
+        <option value='' disabled selected>Select Blood Group</option>
+        <option value='A+'>A+</option>
+        <option value='A-'>A-</option>
+        <option value='B+'>B+</option>
+        <option value='B-'>B-</option>
+        <option value='AB+'>AB+</option>
+        <option value='AB-'>AB-</option>
+        <option value='O+'>O+</option>
+        <option value='O-'>O-</option>
+      </select>
+
+      <button type='submit' class='btn'>Create Account</button>
+
+      <div class='seperator'>
+        <div class='line'></div>
+        <a href='/login'>Goto Login </a>
+        <div class='line'></div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

@@ -1,11 +1,28 @@
-<html>
+<!-- views/layouts/main.hbs -->
+
+
+<html lang='en'>
   <head>
-    <meta charset='utf-8' />
-    <title>Blood Bank Management</title>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{{pageTitle}}</title>
+
+    <!-- Include toastr CSS from CDN -->
+    <link
+      rel='stylesheet'
+      href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'
+      integrity='sha512-...'
+      crossorigin='anonymous'
+    />
   </head>
   <body>
-
     {{{body}}}
 
+    <!-- Include toastr scripts from CDN -->
+    <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js'
+      integrity='sha512-...'
+      crossorigin='anonymous'
+    ></script>
   </body>
 </html>

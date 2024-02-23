@@ -1,0 +1,37 @@
+<link rel='stylesheet' href='css/homepage.css' />
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' />
+
+<title>Blood Management System</title>
+{{>sidebar}}
+
+<div class='content'>
+  <div class='title-info'>
+    <p>Your Activities</p>
+    <i class='fas fa-table'></i>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Quantity</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+     {{#each allRequestOfUser}}
+  <tr>
+    <td>{{requestType}}</td>
+    <td><span class='price'>{{requiredPint}}</span></td>
+    <td>
+      {{#if isAccepted}}
+        <span class='status'>Approved</span>
+      {{else}}
+        <span class='status-pending'>Pending</span>
+      {{/if}}
+    </td>
+  </tr>
+{{/each}}
+
+    </tbody>
+  </table>
+</div>

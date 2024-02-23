@@ -1,0 +1,66 @@
+.content {
+  width: calc(100% - 300px);
+  margin-left: 310px;
+  height: 100vh;
+}
+
+* {
+  color: black;
+}
+
+body {
+  background-color: #eee;
+  color: #444;
+  font-family: sans-serif;
+}
+
+.list ul:nth-child(odd) {
+  background-color: #ddd;
+}
+
+.list ul:nth-child(even) {
+  background-color: #fff;
+}
+
+.list {
+  display: table;
+  width: calc(100% - 3em);
+  margin-top: 2em;
+}
+
+.list ul {
+  display: table-row;
+}
+
+.list ul:first-child li {
+  background-color: #002d62;
+  color: white;
+}
+
+.list ul > li {
+  display: table-cell;
+  padding: 0.5em 1em;
+  color: black;
+  text-align: center;
+}
+
+.operations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.operations i {
+  font-size: 24px;
+  padding: 5px;
+}
+
+.validation {
+  background-color: white;
+  color: black;
+  width: 75.4%;
+  position: absolute;
+  padding: 10px;
+  text-align: center;
+}

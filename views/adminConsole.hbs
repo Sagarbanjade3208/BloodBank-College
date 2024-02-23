@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/adminConsole.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
+   
+</head>
+<body>
+    {{> sidebar "admin"}}
+    <div class='content' style='color: white;'>
+        <div class="list">
+            <ul>
+                <li>Full Name</li>
+                <li>Request Type</li>
+                <li>Blood Group</li>
+                <li>Blood Pints</li>
+                <li>Operations</li>
+            </ul>
+
+            {{#if requests.length}}
+                {{#each requests}}
+                    <ul>
+                        <li>{{this.userId.name}}</li>
+                        <li>{{this.requestType}}</li>
+                        <li>{{this.bloodGroup}}</li>
+                        <li>{{this.requiredPint}}</li>
+                        <div class='operations'>
+                            <a href=""><i class="fa-solid fa-pen-to-square" style='color: orange;'></i></a>
+                            <a href="/api/v1/blood/delete/{{_id}}"><i class="fa-solid fa-delete-left" style='color: red;'></i></a>
+                            <a href="/api/v1/blood/accept/{{_id}}"><i class="fa-solid fa-check" style='color: green;'></i></a>
+                        </div>
+                    </ul>
+                {{/each}}
+            {{else}}
+                <p class="validation">No data to show.</p>
+            {{/if}}
+        </div>
+    </div>
+</body>
+</html>

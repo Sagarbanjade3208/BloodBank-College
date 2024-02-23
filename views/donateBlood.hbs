@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="css/donateBlood.css">
+{{>sidebar}}
+<link rel="stylesheet" href="css/requestBlood.css">
+{{>sidebar}}
+<div class='content'>
+  <body>
+
+    <main>
+       <div class="left-side"></div>
+      
+      <div class="right-side">
+        <form action='/api/v1/blood/create' method='post'>
+        <label for="requestType">Type</label>
+        <input type="text" value="DONATE" disabled/>
+        <input type="hidden" name="requestType" value="DONATE"/>
+
+        <label for="group">Blood Group</label>
+        <input type="text" placeholder="Enter Blood Group" name="bloodGroup" required />
+
+        <label for="password">Donation Pint</label>
+        <input
+          type="number"
+          placeholder="Enter Required Pint"
+          name="requiredPint"
+          required />
+
+        <button type="submit" class="login-btn">Request Donation</button>
+        
+      </form>
+      </div>
+      
+    </main>
+  </body>
+</div>
