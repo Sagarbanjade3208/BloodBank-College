@@ -8,10 +8,7 @@ Router.get('/', (request, response) => {
 
 Router.post(
   '/signup',
-  (req, res, next) => {
-    req.body.isAdmin = false;
-    next();
-  },
+
   signup
 );
 Router.post('/login', login);

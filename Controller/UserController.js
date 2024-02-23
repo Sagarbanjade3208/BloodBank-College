@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 exports.signup = CatchAsync(async function (request, response, next) {
   const { name, email, password, age, address, phoneNumber, bloodGroup } =
     request.body;
-
+  const isAdmin = request.body.isAdmin ? true : false;
   const user = await User.create({
     name,
     email,
@@ -16,6 +16,7 @@ exports.signup = CatchAsync(async function (request, response, next) {
     address,
     phoneNumber,
     bloodGroup,
+    isAdmin,
   });
 
   response.status(200).json({

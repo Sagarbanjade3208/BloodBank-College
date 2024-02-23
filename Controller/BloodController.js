@@ -3,6 +3,7 @@ const CatchAsync = require('../Utils/CatchAsync');
 
 exports.createRequest = CatchAsync(async function (request, response) {
   request.body.userId = request._user._id;
+  request.body.bloodGroup = request.body.bloodGroup.toUpperCase();
   console.log(request.body);
   await Blood.create(request.body);
   response.redirect('/dashboard');
