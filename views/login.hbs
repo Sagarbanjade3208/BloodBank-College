@@ -1,38 +1,51 @@
-<link rel='stylesheet' href='css/login.css' />
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel='stylesheet' href='/css/login.css' />
+  </head>
+  <body>
+    <div class='container'>
+      <div class='singup-section' id='singup-section'>
+        <header>Log Into Your Account</header>
 
-<div class='container'>
+        <div class='seperator'>
+          <div class='line'></div>
+        </div>
 
-  <div class='singup-section' id='singup-section'>
-    <header>Log Into Your Account</header>
+        <!-- Error message prompt -->
+        {{#if errorMessage}}
+          <div class='error-message'>{{errorMessage}}</div>
+        {{/if}}
 
-    <div class='seperator'>
-      <div class='line'></div>
+        <form action='/api/v1/users/login' method='post'>
+          <input
+            type='email'
+            placeholder='Enter your email'
+            name='email'
+            required
+          />
+          <input
+            type='password'
+            placeholder='Password'
+            name='password'
+            required
+          />
+
+          <button type='submit' class='btn'>Login</button>
+
+          <div class='seperator'>
+            <div class='line'></div>
+            <a href='/signup'>Create Account</a>
+            <div class='line'></div>
+          </div>
+
+          <div class='seperator' style='margin-top: 2px;'>
+            <div class='line'></div>
+            <a href='/admin-signup'>Become Admin</a>
+            <div class='line'></div>
+          </div>
+        </form>
+      </div>
     </div>
-    <form action='/api/v1/users/login' method='post'>
-      <input
-        type='email'
-        placeholder='Enter your email'
-        name='email'
-        required
-      />
-      <input type='password' placeholder='Password' name='password' required />
-
-      <button type='submit' class='btn'>Login</button>
-
-      <div class='seperator'>
-        <div class='line'></div>
-        <a href='/signup'>Create Account</a>
-        <div class='line'></div>
-
-      </div>
-      <div class='seperator' style='margin-top: 2px;'>
-        <div class='line'></div>
-        <a href='/admin-signup'>Become Admin</a>
-        <div class='line'></div>
-
-      </div>
-    </form>
-
-  </div>
-
-</div>
+  </body>
+</html>

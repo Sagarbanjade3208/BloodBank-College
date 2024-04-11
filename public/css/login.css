@@ -126,3 +126,10 @@ form .btn {
   color: #fff;
   border: none;
 }
+
+.error-message {
+  text-align: center;
+  background-color: white;
+  color: red;
+  padding: 5px 2px;
+}

@@ -1,13 +1,15 @@
 const AppError = require('./AppError');
 
-function handleDuplicationError(error) {
+function handleDuplicationError(error, response) {
   const duplicateValues = error.message.match(/"([^"]*)"/)[0];
-  const message = 'Account already exist with : ' + duplicateValues;
-  return new AppError(message, 400);
+  const message = 'Account already exists with: ' + duplicateValues;
+  response.render('signup', {
+    errorMessage: message,
+  });
 }
 
 function handleCastError(error) {
-  const message = `Invalid ${error.path} : ${error.value}`;
+  const message = `Invalid ${error.path}: ${error.value}`;
   return new AppError(message, 400);
 }
 
@@ -19,19 +21,20 @@ function handleValidationError(error) {
 }
 
 function handleJwtExpirationError() {
-  return new AppError('JWT Expired Please Renew New Token', 401);
+  return new AppError('JWT Expired. Please Renew New Token', 401);
 }
 
 function sendErrorProduction(error, response) {
-  if (error.code === 11000) error = handleDuplicationError(error);
+  if (error.code === 11000) return handleDuplicationError(error, response);
   if (error.name === 'CastError') error = handleCastError(error);
   if (error.name === 'ValidationError') error = handleValidationError(error);
   if (error.name === 'TokenExpiredError') error = handleJwtExpirationError();
   if (error.isOperational) {
-    response.status(error.statusCode).json({
-      message: error.message,
-      status: error.status,
-    });
+    if (error.errorFrom === 'login') {
+      response.render('login', {
+        errorMessage: error.message,
+      });
+    }
   } else {
     response.status(error.statusCode).json({
       message: 'Something went very wrong',
@@ -51,10 +54,6 @@ module.exports = (error, request, response, next) => {
   error.statusCode = error.statusCode || 500;
   process.env.NODE_ENV = 'development';
   error.status = error.status || 'Error';
-  // if (process.env.NODE_ENV === 'production')
-  console.log(error);
+  console.log(error); // Log the error for debugging purposes
   return sendErrorProduction(error, response);
-  // if (process.env.NODE_ENV === 'development') {
-  // return sendErrorDevelopment(error, response);
-  // }
 };

@@ -1,4 +1,4 @@
-<link rel='stylesheet' href='css/login.css' />
+<link rel='stylesheet' href='/css/login.css' />
 <link
   href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
   rel='stylesheet'
@@ -12,6 +12,9 @@
     <div class='seperator'>
       <div class='line'></div>
     </div>
+    {{#if errorMessage}}
+      <div class='error-message'>{{errorMessage}}</div>
+    {{/if}}
     <form action='/api/v1/users/signup' method='post'>
       <input type='hidden' value='true' name='isAdmin' />
       <input type='text' placeholder='Enter your name' name='name' />
