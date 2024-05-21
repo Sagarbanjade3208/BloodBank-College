@@ -8,6 +8,7 @@ const {
   getDonateBloodPage,
   getRequestBloodPage,
   getAdminSignupPage,
+  getUpdatePage,
 } = require('../Controller/DocumentController');
 const protectRoute = require('../Utils/ProtectRoute');
 const AdminPrivilage = require('../Utils/AdminPrivilage');
@@ -19,6 +20,11 @@ Router.route('/logout').get(protectRoute, logout);
 Router.route('/dashboard').get(protectRoute, getDashboard);
 Router.route('/admin').get(protectRoute, AdminPrivilage, getAdminPage);
 Router.route('/donate-blood').get(protectRoute, getDonateBloodPage);
+Router.route('/updateblood/:BloodID').get(
+  protectRoute,
+  AdminPrivilage,
+  getUpdatePage
+);
 Router.route('/request-blood').get(
   protectRoute,
   protectRoute,

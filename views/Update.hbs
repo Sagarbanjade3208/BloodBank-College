@@ -1,0 +1,27 @@
+<link rel='stylesheet' href='../css/donateBlood.css' />
+<link rel='stylesheet' href='../css/requestBlood.css' />
+<div class='content'>
+  <body>
+    <main>
+      <div class='left-side'></div>
+
+      <div class='right-side'>
+
+        <form method='post' action='/api/v1/blood/update/{{BloodID}}'>
+          <label for='group'>Blood Group</label>
+          <input
+            type='text'
+            placeholder='Enter Blood Group'
+            name='bloodGroup'
+            value='{{bloodGroup}}'
+            required
+          />
+
+          <button type='submit' class='login-btn'>Update</button>
+
+        </form>
+      </div>
+
+    </main>
+  </body>
+</div>

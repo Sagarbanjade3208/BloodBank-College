@@ -53,3 +53,9 @@ exports.getAdminPage = async (request, response) => {
 exports.getAdminSignupPage = (request, response) => {
   response.render('adminAccount');
 };
+
+exports.getUpdatePage = async (request, response) => {
+  const { BloodID } = request.params;
+  const document = await BloodRequest.findById(BloodID);
+  response.render('Update', { BloodID, bloodGroup: document.bloodGroup });
+};

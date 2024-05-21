@@ -26,10 +26,7 @@ exports.signup = CatchAsync(async function (request, response, next) {
     isAdmin,
   });
 
-  response.status(200).json({
-    message: 'User created successfully',
-    user,
-  });
+  response.redirect('/login');
 });
 
 exports.login = CatchAsync(async function (request, response, next) {

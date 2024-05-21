@@ -34,6 +34,8 @@ function sendErrorProduction(error, response) {
       response.render('login', {
         errorMessage: error.message,
       });
+    } else {
+      response.send(`${error.message}`);
     }
   } else {
     response.status(error.statusCode).json({
@@ -52,7 +54,7 @@ function sendErrorDevelopment(error, response) {
 
 module.exports = (error, request, response, next) => {
   error.statusCode = error.statusCode || 500;
-  process.env.NODE_ENV = 'development';
+  process.env.NODE_ENV = 'production';
   error.status = error.status || 'Error';
   console.log(error); // Log the error for debugging purposes
   return sendErrorProduction(error, response);

@@ -20,3 +20,14 @@ exports.deleteRequest = CatchAsync(async function (request, response) {
   await Blood.findByIdAndDelete(id);
   response.redirect('/dashboard');
 });
+
+// update
+exports.updateRequest = CatchAsync(async (request, response) => {
+  const { id } = request.params;
+  if (request._user.isAdmin === false) {
+    return response.redirect('/dashboard');
+  }
+  await Blood.findByIdAndUpdate(id, { bloodGroup: request.body.bloodGroup });
+  console.log('updated');
+  response.redirect('/admin');
+});
